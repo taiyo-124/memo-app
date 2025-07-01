@@ -6,7 +6,8 @@ body {
     align-items: center;
     padding: 20px;
     min-height: 100vh;
-    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -15,11 +16,11 @@ h1 {
 }
 
 #memo-input {
-    width: 80%;
+    width: 100%;
     max-width: 600px;
     height: 150px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
@@ -36,6 +37,9 @@ h1 {
     font-size: 16px;
     margin-bottom: 20px;
     transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
 }
 
 #save-button:hover {
@@ -43,13 +47,13 @@ h1 {
 }
 
 #memo-list {
-    width: 80%;
-    max-width: 600px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-grow: 1; /* 残りの高さを全て占める */
+    overflow-y: auto; /* メモが増えたらスクロール */
+    max-height: 400px; /* 最大高さを設定してスクロール可能に (必要に応じて調整) */
+    width: 100%; /* 親の幅に合わせる */
+    padding: 0; /* 親にpaddingがあるのでここでは0 */
+    box-shadow: none; /* 親に影があるのでここでは不要 */
+    border: none; /* 親にボーダーがあるのでここでは不要 */
 }
 
 .memo-item {
@@ -85,4 +89,353 @@ h1 {
 
 .delete-button:hover {
     background-color: #c82333;
+}
+
+/* カテゴリセクションのスタイル */
+.category-section {
+    width: 80%;
+    max-width: 600px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center; /* 中央寄せ */
+}
+
+.category-section h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.category-section input[type="text"],
+.category-section input[type="color"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    vertical-align: middle; /* 要素の垂直方向の位置合わせ */
+}
+
+.category-section button {
+    background-color: #28a745; /* 緑系の色 */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    vertical-align: middle;
+}
+
+.category-section button:hover {
+    background-color: #218838;
+}
+
+#category-list-display {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #eee; /* 点線で区切り */
+    text-align: left; /* 左寄せ */
+}
+
+.category-tag {
+    display: inline-block; /* インラインブロック要素として表示 */
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 15px; /* 角を丸く */
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.category-tag:hover {
+    opacity: 0.8; /* ホバーで少し透明に */
+}
+
+.category-tag .delete-category-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.category-tag .delete-category-button:hover {
+    text-decoration: underline;
+}
+
+/* メモアイテム内のカテゴリ表示 */
+.memo-category-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: white;
+    font-size: 12px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* メモ入力エリアのカテゴリ選択ドロップダウン */
+#memo-category-select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+hr {
+    width: 80%;
+    max-width: 600px;
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+/* カレンダーセクションのスタイル */
+.calendar-section {
+    flex: 0 0 450px;
+    max-width: 450px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.calendar-header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-header button:hover {
+    background-color: #0056b3;
+}
+
+.calendar-grid-container {
+    padding: 0 10px;
+}
+
+.calendar-grid {
+    grid-template-columns: repeat(7, 1fr); /* 常に7列 */
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7列均等 */
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.calendar-weekdays span:first-child { color: #dc3545; } /* 日曜日を赤く */
+.calendar-weekdays span:last-child { color: #007bff; }  /* 土曜日を青く */
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7列均等 */
+    gap: 5px; /* セル間の隙間 */
+}
+
+.calendar-day {
+    aspect-ratio: 1 / 1; /* 正方形にする */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    position: relative; /* メモインジケータ用 */
+}
+
+.calendar-day:hover {
+    background-color: #e2e6ea;
+    border-color: #ced4da;
+}
+
+.calendar-day.current-month {
+    color: #333;
+}
+
+.calendar-day.prev-month,
+.calendar-day.next-month {
+    color: #bbb;
+    background-color: #f2f2f2;
+    cursor: default; /* クリック不可に */
+}
+
+.calendar-day.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+.calendar-day.selected .memo-indicator {
+    background-color: white; /* 選択されている日はインジケータも白く */
+}
+
+.calendar-day.today {
+    border: 2px solid #28a745; /* 今日の日付に緑色の枠 */
+    font-weight: bold;
+}
+
+/* メモがある日のインジケータ */
+.memo-indicator {
+    width: 6px;
+    height: 6px;
+    background-color: #dc3545; /* メモがある日は赤い点 */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.selected-date-display {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+}
+
+/* ナビゲーションバーのスタイル */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* ボタン間の隙間 */
+    margin-bottom: 30px;
+}
+
+.nav-button {
+    background-color: #f0f0f0; /* 非アクティブ時の背景色 */
+    color: #555;
+    padding: 10px 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nav-button:hover {
+    background-color: #e0e0e0;
+    color: #333;
+    border-color: #ccc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-button.active {
+    background-color: #007bff; /* アクティブ時の背景色 */
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    pointer-events: none; /* アクティブなボタンはクリック不可にする */
+}
+
+/* ページコンテナの表示/非表示 */
+.page-container {
+    display: none; /* デフォルトでは非表示 */
+    width: 100%; /* 親要素の幅いっぱいに */
+    max-width: 700px; /* 最大幅はメインのコンテンツに合わせる */
+    /* 他のスタイルは各セクションクラスで適用されているため、ここでは最小限 */
+}
+
+.page-container.active {
+    display: block; /* activeクラスがあれば表示 */
+    max-width: 100%;
+}
+
+/* カレンダーとメモ表示を横並びにするコンテナ */
+.memo-content-container {
+    display: flex; /* Flexboxを適用して子要素を横並びにする */
+    gap: 25px; /* カレンダーとメモの間の隙間 */
+    width: 100%;
+    max-width: 1000px; /* 横並びにするための最大幅 */
+    margin-bottom: 25px; /* 下の余白 */
+    flex-wrap: wrap; /* 画面幅が狭い場合に折り返す */
+    justify-content: center; /* 中央寄せ */
+}
+
+.daily-memo-section {
+    flex: 1; /* 残りのスペースを全て占める */
+    min-width: 300px; /* 最小幅を設定 */
+    background-color: white;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    /* margin-bottom: 25px; はmemo-content-containerに移動したため不要 */
+    display: flex; /* 子要素（入力とリスト）を縦に並べるためにflexbox */
+    flex-direction: column;
+}
+
+.memo-input-section {
+    width: 100%; /* daily-memo-sectionの幅に合わせる */
+    max-width: none; /* 親のmax-widthに従う */
+    margin-bottom: 20px; /* メモリストとの間の余白 */
+    padding: 0; /* 親にpaddingがあるのでここでは0 */
+    box-shadow: none; /* 親に影があるのでここでは不要 */
+    border: none; /* 親にボーダーがあるのでここでは不要 */
+}
+
+/* 応答性のためのメディアクエリ */
+@media (max-width: 1050px) { /* memo-content-containerのmax-width + gap くらいで調整 */
+    .memo-content-container {
+        flex-direction: column; /* 画面が狭くなったら縦並びに戻す */
+        align-items: center; /* 中央寄せ */
+    }
+
+    .calendar-section,
+    .daily-memo-section {
+        flex: none; /* flexgrowとflexshrinkをリセット */
+        width: 100%; /* 全幅にする */
+        max-width: 700px; /* 縦並びになった時の最大幅 */
+    }
 }

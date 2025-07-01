@@ -8,10 +8,59 @@
 </head>
 <body>
     <h1>私のメモ</h1>
-    <textarea id="memo-input" placeholder="ここにメモを入力してください..."></textarea>
-    <button id="save-button">メモを保存</button>
-    <div id="memo-list">
+
+    <nav class="main-nav">
+        <button id="show-memo-page" class="nav-button active">メモ</button>
+        <button id="show-category-page" class="nav-button">カテゴリ管理</button>
+    </nav>
+
+    <hr>
+
+    <div id="memo-page" class="page-container active">
+        <div class="memo-content-container">
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <button id="prev-month-button">&lt;</button>
+                    <h2 id="current-month-year"></h2>
+                    <button id="next-month-button">&gt;</button>
+                </div>
+                <div class="calendar-grid-container">
+                    <div class="calendar-weekdays">
+                        <span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span>
+                    </div>
+                    <div id="calendar-grid" class="calendar-grid">
+                        </div>
+                </div>
+                <div class="selected-date-display">
+                    選択日: <span id="selected-date-text"></span>
+                </div>
+            </div>
+
+            <div class="daily-memo-section">
+                <div class="memo-input-section">
+                    <textarea id="memo-input" placeholder="ここにメモを入力してください..."></textarea>
+                    <select id="memo-category-select">
+                        <option value="">カテゴリを選択しない</option>
+                        </select>
+                    <button id="save-button">メモを保存</button>
+                </div>
+
+                <div id="memo-list">
+                    </div>
+            </div>
         </div>
+    </div>
+
+    <div id="category-management-page" class="page-container">
+        <div class="category-section">
+            <h2>カテゴリ管理</h2>
+            <input type="text" id="category-name-input" placeholder="新しいカテゴリ名">
+            <input type="color" id="category-color-input" value="#ADD8E6">
+            <button id="add-category-button">カテゴリを追加</button>
+            <div id="category-list-display">
+                </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
